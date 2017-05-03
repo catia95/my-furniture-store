@@ -2,9 +2,10 @@
   "name": "my-furniture-store",
   "version": "1.0.0",
   "description": "testing-this",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/catia95/my-furniture-store/issues"
   },
-  "homepage": "https://github.com/catia95/my-furniture-store#readme"
+  "homepage": "https://github.com/catia95/my-furniture-store#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
