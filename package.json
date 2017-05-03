@@ -1,0 +1,19 @@
+{
+  "name": "my-furniture-store",
+  "version": "1.0.0",
+  "description": "testing-this",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catia95/my-furniture-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catia95/my-furniture-store/issues"
+  },
+  "homepage": "https://github.com/catia95/my-furniture-store#readme"
+}
