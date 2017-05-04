@@ -15,7 +15,7 @@ exports.validateForm = function (req, res, next) {
     });
 };
 
-exports.validateForm = function (req) {
+exports.validateFormField = function (req) {
     console.log('Validating whole form...');
 
     joi.validate(orderFormFieldDefinitions.retrieveFieldsToValidate(req), orderFormFieldDefinitions.schema, function(err, value) {
