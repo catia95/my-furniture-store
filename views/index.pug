@@ -1,0 +1,95 @@
+doctype 5
+html(lang='en')
+    head
+        title='Order Some Furniture!'
+    body
+        h1 Order Form
+        img.className#loading-icon(src='/static/loading-icon.gif' alt='Loading Icon' style='visibility:hidden; height100px')
+        h2 * Required Fields
+
+        div.form-errors
+            if errors
+                h3= errors
+
+        form(id='orderFormData', action='/order', method='post')
+            div.form-title
+                h4 Customer Details:
+            div.form-field
+                label(for='firstName') First Name:
+                input#firstName(name='firstName', type='text', value=firstName, aria-required='true')
+                label#firstNameError
+                | *
+            div.form-field
+                label(for='lastName') Last Name:
+                input#lastName(name='lastName', type='text', value=lastName, aria-required='true')
+                label#lastNameError
+                | *
+            div.form-field
+                label(for='email') Email:
+                input#email(name='email', type='text', value=email, aria-required='true')
+                label#emailError
+                | *
+            div.form-field
+                label(for='mobileNumber') Mobile Number:
+                input#mobileNumber(name='mobileNumber', type='text', value=mobileNumber, aria-required='false')
+                label#mobileNumberError
+
+            br
+            div.form-title
+                h4 Delivery Address:
+            div.form-field
+                label(for='houseNumber') House Number:
+                input#houseNumber(name='houseNumber', type='text', value=houseNumber, aria-required='true')
+                label#houseNumberError
+                | *
+            div.form-field
+                label(for='street') Street:
+                input#street(name='street', type='text', value=street, aria-required='true')
+                label#streetError
+                | *
+            div.form-field
+                label(for='city') City:
+                input#city(name='city', type='text', value=city, aria-required='false')
+                label#cityError
+            div.form-field
+                label(for='postcode') Postcode:
+                input#postcode(name='postcode', type='text', value=postcode, aria-required='true')
+                label#postcodeError
+                | *
+
+            div.form-title
+                h4 Order:
+            div.form-field
+                label(for='numberOfSofas') Number Of Sofas:
+                select#numberOfSofas(name='numberOfSofas', type='text', value=numberOfSofas, aria-required='false')
+                    option(selected=true, value='0') 0
+                    option(selected=false, value='1') 1
+                    option(selected=false, value='2') 2
+                    option(selected=false, value='3') 3
+            div.form-field
+                label(for='numberOfVintageChairs') Number Of Vintage Chairs:
+                select#numberOfVintageChairs(name='numberOfVintageChairs', type='text', value=numberOfVintageChairs, aria-required='false')
+                    option(selected=true, value='0') 0
+                    option(selected=false, value='1') 1
+                    option(selected=false, value='2') 2
+                    option(selected=false, value='3') 3
+            div.form-field
+                label(for='numberOfDinnerTables') Number Of Dinner Tables:
+                select#numberOfDinnerTables(name='numberOfDinnerTables', type='text', value=numberOfDinnerTables, aria-required='false')
+                    option(selected=true, value='0') 0
+                    option(selected=false, value='1') 1
+                    option(selected=false, value='2') 2
+                    option(selected=false, value='3') 3
+            div.form-field
+                label(for='numberOfSideTables') Number Of Side Tables:
+                select#numberOfSideTables(name='numberOfSideTables', type='text', value=numberOfSideTables, aria-required='false')
+                    option(selected=true, value='0') 0
+                    option(selected=false, value='1') 1
+                    option(selected=false, value='2') 2
+                    option(selected=false, value='3') 3
+
+            br
+            div.form-control
+                button#submit-button(type='submit', title='Submit Form') Submit
+
+            script(type='text/javascript', src='js/bundle.js')
