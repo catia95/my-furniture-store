@@ -1,0 +1,41 @@
+doctype 5
+html(lang='en')
+    head
+        title='Order Confirmation!'
+    body
+        h1 Order Form
+
+        form(id='orderFormData', action='/order', method='post')
+            div.form-title
+                h2 Customer Details:
+            div.form-field
+                label(for='firstName') First Name: #{firstName}
+            div.form-field
+                label(for='lastName') Last Name: #{lastName}
+            div.form-field
+                label(for='email') Email: #{email}
+            div.form-field
+                label(for='mobileNumber') Mobile Number: #{mobileNumber}
+
+            br
+            div.form-title
+                h2 Delivery Address:
+            div.form-field
+                label(for='houseNumber') House Number: #{houseNumber}
+            div.form-field
+                label(for='street') Street: #{street}
+            div.form-field
+                label(for='city') City: #{city}
+            div.form-field
+                label(for='postcode') Postcode: #{postcode}
+
+            div.form-title
+                h2 Order:
+            div.form-field
+                label(for='numberOfSofas') Number Of Sofas: #{numberOfSofas}
+            div.form-field
+                label(for='numberOfVintageChairs') Number Of Vintage Chairs: #{numberOfVintageChairs}
+            div.form-field
+                label(for='numberOfDinnerTables') Number Of Dinner Tables: #{numberOfDinnerTables}
+            div.form-field
+                label(for='numberOfSideTables') Number Of Side Tables: #{numberOfSideTables}
