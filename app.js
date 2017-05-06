@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static('public'));
 
-//can use sanitizebody and then name to prevent JavaScript cross-site scripting attacks
+//TODO can use sanitizebody and then name to prevent JavaScript cross-site scripting attacks
 const showOrderDetails = function (req, res) {
     const millisecondWait = 2000;
     setTimeout(function() {
