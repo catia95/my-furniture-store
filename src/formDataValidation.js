@@ -24,7 +24,7 @@ exports.validateFormField = function (req) {
             console.log('Validation of field SUCCESSFUL');
             returnValue = {};
         } else {
-            console.log('Validation of whole form UNSUCCESSFUL');
+            console.log('Validation of field UNSUCCESSFUL');
             returnValue = orderFormFieldDefinitions.formFields(req, err.details[0].message);
         }
         return returnValue;

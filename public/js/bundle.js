@@ -16980,7 +16980,7 @@ exports.validateFormField = function (req) {
             console.log('Validation of field SUCCESSFUL');
             returnValue = {};
         } else {
-            console.log('Validation of whole form UNSUCCESSFUL');
+            console.log('Validation of field UNSUCCESSFUL');
             returnValue = orderFormFieldDefinitions.formFields(req, err.details[0].message);
         }
         return returnValue;
@@ -16992,15 +16992,15 @@ exports.validateFormField = function (req) {
 /***/ (function(module, exports) {
 
 
-window.addEventListener('load', function() {
+//window.addEventListener('load', function() {
     console.log('In loadingIconAction.js');
     document.getElementById('loading-icon').style.visibility = 'hidden';
     document.getElementById('submit-button').addEventListener('click', () => {
         document.getElementById('loading-icon').style.visibility = 'visible';
         console.log('Loading...');
     });
-});
-
+//}
+//todo add in docuen
 
 
 /***/ }),
@@ -31139,13 +31139,14 @@ module.exports = function(module) {
 const formDataValidator = __webpack_require__(78);
 __webpack_require__(79);
 
-document.getElementById('firstName').onBlur = function() {
+console.log('In Index.js');
+document.getElementById('firstName').addEventListener('blur', function() {
     //const fieldValue = document.getElementById(firstName).value;
+    console.log('onBlur firstName');
     req = {body: {field: 'HELLO', lastname:'HIII'}};
     const validationResults = formDataValidator.validateFormField(req);
-    console.log(validationResults.errors);
     //todo Change id names in html to concise to html way - camel case or -
-};
+});
 
 /***/ }),
 /* 173 */
