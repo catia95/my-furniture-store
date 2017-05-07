@@ -31143,8 +31143,24 @@ console.log('In Index.js');
 //TODO Change DOM elements id names in html to concise to html way - camel case or -
 //TODO Have to ensure onBlur event called before clicking submit button
 
+const formFieldValues =  {
+        firstName: undefined,
+        lastName: undefined,
+        email: undefined,
+        mobileNumber: undefined,
+        houseNumber: undefined,
+        street: undefined,
+        city: undefined,
+        postcode: undefined,
+        numberOfSofas: undefined,
+        numberOfVintageChairs: undefined,
+        numberOfDinnerTables: undefined,
+        numberOfSideTables: undefined
+    }
+
 function validateField(fieldId, fieldValue) {
-    const req = {body: {[fieldId]: fieldValue}};
+    formFieldValues[fieldId] = fieldValue;
+    const req = {body: formFieldValues};
     console.log(req);
     return formDataValidator.validateFormField(req).errors;
 }
@@ -31155,6 +31171,7 @@ function flagValidationErrors(error, fieldId, fieldErrorId, fieldLabel) {
         error = error.replace(stringToReplace, fieldLabel);
         document.getElementById(fieldErrorId).innerHTML = error;
     } else {
+        document.getElementById(fieldErrorId).innerHTML = "";
         console.log('Validation successful for fieldId: ' + fieldId);
     }
 }
@@ -31169,6 +31186,8 @@ function inlineValidation(event) {
     const fieldLabel = event.srcElement.labels[0].innerText.replace(':', ' ');
     flagValidationErrors(validationErrors, fieldId, fieldId+'Error', fieldLabel)
 }
+
+//TODO Send through more than one field otherwise always errors!
 
 document.getElementById('firstName').onblur = function(event) {
     console.log(event);
@@ -31204,6 +31223,8 @@ exports.formFields = function (req, errors) {
         errors: errors
     }
 };
+
+//todo maybe add the fieldschema in here?
 
 exports.schema = joi.object().keys({
     firstName: joi.string().alphanum().required(), //todo has to only be alpha!

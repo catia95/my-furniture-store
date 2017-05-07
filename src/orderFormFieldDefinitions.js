@@ -18,6 +18,8 @@ exports.formFields = function (req, errors) {
     }
 };
 
+//todo maybe add the fieldschema in here?
+
 exports.schema = joi.object().keys({
     firstName: joi.string().alphanum().required(), //todo has to only be alpha!
     lastName: joi.string().alphanum().required(),
