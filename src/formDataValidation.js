@@ -16,15 +16,15 @@ exports.validateForm = function (req, res, next) {
 };
 
 exports.validateFormField = function (req) {
-    console.log('Validating whole form...');
+    console.log('Validating field...');
 
-    joi.validate(orderFormFieldDefinitions.retrieveFieldsToValidate(req), orderFormFieldDefinitions.schema, function(err, value) {
+    return joi.validate(orderFormFieldDefinitions.retrieveFieldsToValidate(req), orderFormFieldDefinitions.schema, function(err, value) {
         let returnValue;
         if(err === null) {
-            console.log('Validation of field SUCCESSFUL');
+            console.log('Validation of fields SUCCESSFUL');
             returnValue = {};
         } else {
-            console.log('Validation of field UNSUCCESSFUL');
+            console.log('Validation of fields UNSUCCESSFUL');
             returnValue = orderFormFieldDefinitions.formFields(req, err.details[0].message);
         }
         return returnValue;
