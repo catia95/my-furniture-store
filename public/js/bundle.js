@@ -16972,15 +16972,15 @@ exports.validateForm = function (req, res, next) {
 };
 
 exports.validateFormField = function (req) {
-    console.log('Validating whole form...');
+    console.log('Validating field...');
 
-    joi.validate(orderFormFieldDefinitions.retrieveFieldsToValidate(req), orderFormFieldDefinitions.schema, function(err, value) {
+    return joi.validate(orderFormFieldDefinitions.retrieveFieldsToValidate(req), orderFormFieldDefinitions.schema, function(err, value) {
         let returnValue;
         if(err === null) {
-            console.log('Validation of field SUCCESSFUL');
+            console.log('Validation of fields SUCCESSFUL');
             returnValue = {};
         } else {
-            console.log('Validation of field UNSUCCESSFUL');
+            console.log('Validation of fields UNSUCCESSFUL');
             returnValue = orderFormFieldDefinitions.formFields(req, err.details[0].message);
         }
         return returnValue;
@@ -17000,7 +17000,7 @@ exports.validateFormField = function (req) {
         console.log('Loading...');
     });
 //}
-//todo add in docuen
+//TODO add in check for document loaded
 
 
 /***/ }),
@@ -31140,13 +31140,46 @@ const formDataValidator = __webpack_require__(78);
 __webpack_require__(79);
 
 console.log('In Index.js');
-document.getElementById('firstName').addEventListener('blur', function() {
-    //const fieldValue = document.getElementById(firstName).value;
-    console.log('onBlur firstName');
-    req = {body: {field: 'HELLO', lastname:'HIII'}};
-    const validationResults = formDataValidator.validateFormField(req);
-    //todo Change id names in html to concise to html way - camel case or -
-});
+//TODO Change DOM elements id names in html to concise to html way - camel case or -
+//TODO Have to ensure onBlur event called before clicking submit button
+
+function validateField(fieldId, fieldValue) {
+    const req = {body: {[fieldId]: fieldValue}};
+    console.log(req);
+    return formDataValidator.validateFormField(req).errors;
+}
+
+function flagValidationErrors(error, fieldId, fieldErrorId, fieldLabel) {
+    if (error.toLowerCase().includes(fieldId.toLowerCase())){
+        const stringToReplace = "\"" + fieldId + "\"";
+        error = error.replace(stringToReplace, fieldLabel);
+        document.getElementById(fieldErrorId).innerHTML = error;
+    } else {
+        console.log('Validation successful for fieldId: ' + fieldId);
+    }
+}
+
+function inlineValidation(event) {
+    const fieldId = event.target.id;
+    const fieldValue = event.target.value;
+
+    const validationErrors = validateField(fieldId, fieldValue);
+    console.log(validationErrors);
+
+    const fieldLabel = event.srcElement.labels[0].innerText.replace(':', ' ');
+    flagValidationErrors(validationErrors, fieldId, fieldId+'Error', fieldLabel)
+}
+
+document.getElementById('firstName').onblur = function(event) {
+    console.log(event);
+    inlineValidation(event);
+};
+
+document.getElementById('lastName').onblur = function(event) {
+    console.log(event);
+    inlineValidation(event);
+};
+
 
 /***/ }),
 /* 173 */
